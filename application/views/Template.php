@@ -10,12 +10,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="container">
-    <header>header</header>
+<div class="container-fluid main">
+    <header class="page-header content-center">
+        <h1>
+            My Blog
+            <br>
+            <small>Welcome to my blog</small>
+        </h1>
+
+    </header>
 
     <?php include 'application/views/'. $contentView . '.php';?>
 
-    <footer>footer</footer>
+    <footer class="content-center">
+        &copy; <?php echo date('Y'); ?> V. Bilinskyi
+    </footer>
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: fsoul
- * Date: 05.09.2016
- * Time: 14:21
- */
 class Route
 {
 
@@ -22,6 +16,7 @@ class Route
 
         $modelName = $controllerName . 'Model.php';
         $modelPath = 'application/models/' . $modelName;
+
         if (file_exists($modelPath)) {
             include $modelPath;
         }
@@ -39,20 +34,19 @@ class Route
             $action = 'index';
         }
 
-        if (!empty($urlArr[2])) {
-            $id = $urlArr[2];
+        if (!empty($urlArr[2]) and (intval($urlArr[2]) > 0)) {
+            $data = intval($urlArr[2]);
+        } else {
+            $data = null;
         }
 
-        $controller = new $controllerName;
+        $controller = new $controllerName($data);
+
         if (method_exists($controller, $action)) {
-            // вызываем действие контроллера
             $controller->$action();
         } else {
-            // здесь также разумнее было бы кинуть исключение
             Route::ErrorPage404();
         }
-
-
     }
 
     public static function ErrorPage404()
@@ -60,6 +54,7 @@ class Route
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
         header('HTTP/1.1 404 Not Found');
         header("Status: 404 Not Found");
-        header('Location:' . $host . 'Error404');
+        header('Location:' . $host . 'error404');
     }
+
 }

@@ -1,3 +1,27 @@
-*{
-    color: red;
+.main{
+    background-color: #f1f1f1;
+}
+.content-area{
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.content-center{
+    text-align: center;
+}
+.content-area>img{
+    width: 100%;
+}
+.content-text{
+    padding: 10px;
+}
+.actions{
+    padding-left: 10px;
+}
+.actions-header{
+
+}
+footer{
+    color: #777;
+    margin: 20px 0 10px 0;
 }
