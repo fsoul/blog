@@ -9,9 +9,9 @@
         <div class="content-area">
             <img src="<?php echo $value['imgPath'];?>" alt="">
             <div class="content-text">
-                <p>
-                    <a href="#"><?php echo $value['title'];?></a>
-                </p>
+                <h2 class="content-title">
+                    <a href="/article/view/<?php echo $value['id'];?>"><?php echo $value['title'];?></a>
+                </h2>
                 <div>
                     <?php
                     $string = $value['article'];
@@ -28,7 +28,7 @@
         <nav aria-label="Page navigation" class="content-center">
             <ul class="pagination">
                 <li>
-                    <a href="#" aria-label="Previous">
+                    <a href="/home/index/1" aria-label="First">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                     endfor;
                 ?>
                 <li>
-                    <a href="#" aria-label="Next">
+                    <a href="/home/index/<?php echo $data['pager'];?>" aria-label="Last">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -50,12 +50,12 @@
     </div>
     <div class="col-lg-2 sidebar">
         <p class="panel-title">Available actions:</p>
-        <a class="actions" href="/page/create">Create New Article</a>
+        <a class="actions" href="/article/create">Create New Article</a>
     </div>
     <?php
         else:
             $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-            header('Location:' . $host . 'page/create');
+            header('Location:' . $host . 'article/create');
         endif;
     ?>
 </section>

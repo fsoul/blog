@@ -13,7 +13,7 @@
 <div class="container-fluid main">
     <header class="page-header content-center">
         <h1>
-            My Blog
+            <a href="/">My Blog</a>
             <br>
             <small>Welcome to my blog</small>
         </h1>

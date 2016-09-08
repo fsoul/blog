@@ -14,7 +14,7 @@ class Home extends Controller
         $model = new HomeModel();
         $data = $model->getArticles($this->page);
 
-        $view = new View;
+        $view = new View();
         $view->render('home', 'template', $data);
     }
 

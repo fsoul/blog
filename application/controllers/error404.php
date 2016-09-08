@@ -1,9 +1,17 @@
 <?php
 
-class Error404 extends Controller{
+class Error404 extends Controller
+{
+    public $view;
 
-    function index(){
-        $view = new View();
-        $view->render('error404', 'Template');
+    function __construct()
+    {
+        $this->view = new View();
     }
+
+    function index()
+    {
+        $this->view->render('error404', 'template');
+    }
+
 }
