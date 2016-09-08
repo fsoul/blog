@@ -16,39 +16,21 @@ class Article extends Controller
     function save()
     {
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-        $allowedExts = array("jpg", "jpeg", "gif", "png");
-        $extension = strtolower(end(explode(".", $_FILES["file"]["name"])));
-        if ((($_FILES["file"]["type"] == "image/gif")
-                || ($_FILES["file"]["type"] == "image/jpeg")
-                || ($_FILES["file"]["type"] == "image/png")
-                || ($_FILES["file"]["type"] == "image/pjpeg"))
-            && ($_FILES["file"]["size"] < 300000)
-            && in_array($extension, $allowedExts)
-        ) {
-            if ($_FILES["file"]["error"] > 0) {
-                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-            } else {
 
-                if (file_exists(IMG_PATH . $_FILES["file"]["name"])) {
-                    echo $_FILES["file"]["name"] . " already exists. ";
-                } else {
-                    move_uploaded_file($_FILES["file"]["tmp_name"],
-                        IMG_PATH . $_FILES["file"]["name"]);
-                }
-                $post['imgPath'] = '/images/' . $_FILES["file"]["name"];
-            }
+        if (file_exists(IMG_PATH . $_FILES["file"]["name"])) {
+            echo $_FILES["file"]["name"] . " already exists. ";
         } else {
-            echo "Invalid file<br />";
-            print_r($_FILES);
+            move_uploaded_file($_FILES["file"]["tmp_name"],
+                IMG_PATH . $_FILES["file"]["name"]);
         }
 
+        $post['imgPath'] = '/images/' . $_FILES["file"]["name"];
         $post['title'] = $_POST['title'];
         $post['article'] = $_POST['article'];
 
         $postId = $this->model->save($post);
 
-        if($postId) header('Location:' . $host . '/article/view/' . $postId);
-
+        if($postId) header('Location:' . $host . '/home/index/1');
     }
 
     function create()

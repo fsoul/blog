@@ -15,8 +15,8 @@ class ArticleModel extends Model
     function save($post)
     {
         $stmt = Db::getInstance()->prepare("INSERT INTO Articles (title, imgPath, article) values (:title, :imgPath, :article)");
-        $stmt->execute($post);
+        $res = $stmt->execute($post);
 
-        Helper::d($stmt);
+        return $res;
     }
 }
