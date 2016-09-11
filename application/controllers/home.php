@@ -20,7 +20,10 @@ class Home extends Controller
 
     function ajaxRequest()
     {
+        $model = new HomeModel();
+        $response = $model->getArticles($_POST['page']);
 
+        echo json_encode($response);
     }
 
 }

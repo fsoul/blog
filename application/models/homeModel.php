@@ -6,7 +6,7 @@ class HomeModel extends Model
     function getArticles($page)
     {
 
-        $perPage = 2;
+        $perPage = 1;
         $recordsQty = $this->getTableSize();
         $pager = ceil($recordsQty / $perPage);
 
